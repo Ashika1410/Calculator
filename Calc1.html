@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calc 1</title>
+    <h1>Three Input Calculator</h1>
+    <link rel="stylesheet" href="E:\VS programs\Java Script\Calc1.css">
+</head>
+<body>
+    <div class="calc">
+        <form action="operation">
+            <table>
+                <tr><input type="button" placeholder=""  id="operands"></tr>
+                <br>
+                <tr><input type="button" placeholder=""  id="operator"></tr>
+                <br>
+                <tr><input type="button" placeholder=""  id="result"></tr>
+                <tr>
+                    <td><input type="button" value="(" onclick="getOperand('(')"></td>
+                    <td><input type="button" value=")" onclick="getOperand(')')"></td>
+                    <td><input type="button" value="%" onclick="getOperator('%')"></td>
+                    <td><input type="button" value="C" onclick="getClear('CE')"></td>
+                </tr>
+                <tr>
+                    <td><input type="button" value="7" onclick="getOperand(7)"></td>
+                    <td><input type="button" value="8" onclick="getOperand(8)"></td>
+                    <td><input type="button" value="9" onclick="getOperand(9)"></td>
+                    <td><input type="button" value="/" onclick="getOperator('/')"></td>
+                </tr>
+                <tr>
+                    <td><input type="button" value="4" onclick="getOperand(4)"></td>
+                    <td><input type="button" value="5" onclick="getOperand(5)"></td>
+                    <td><input type="button" value="6" onclick="getOperand(6)"></td>
+                    <td><input type="button" value="*" onclick="getOperator('*')"></td>
+                </tr>
+                <tr>
+                    <td><input type="button" value="1" onclick="getOperand(1)"></td>
+                    <td><input type="button" value="2" onclick="getOperand(2)"></td>
+                    <td><input type="button" value="3" onclick="getOperand(3)"></td>
+                    <td><input type="button" value="-" onclick="getOperator('-')"></td>
+                </tr>
+                <tr>
+                    <td><input type="button" value="0" onclick="getOperand(0)"></td>
+                    <td><input type="button" value="." onclick="getOperand('.')"></td>
+                    <td><input type="button" value="=" onclick="getResult('=')"></td>
+                    <td><input type="button" value="+" onclick="getOperator('+')"></td>
+                </tr>
+            </div>
+            </table>
+        </form>
+    </div>
+
+    <script>
+        var element1 = document.getElementById("operands");
+        var operator = document.getElementById("operator");
+        // var element2 = document.getElementById("operands");
+        var result = document.getElementById("result");
+        var temp='';
+        var firstNo;
+        var secondNo;
+
+        function getOperand(num) {
+           temp += num;
+           element1.value = temp;
+           console.log(element1.value);
+        }
+
+        function getOperator(opr) {
+            operator.value = opr;
+            firstNo=temp;
+            temp='';
+            element1.value='';
+            console.log(operator)
+            // if(operator.value){
+            //     temp='';
+            //     element2.value += num;
+            // }
+            // else{
+            //     temp = element1.value;
+            //     element1.value += num;
+            // }
+        }
+      
+
+        function getResult(rest) {
+            secondNo=temp;
+            if(operator.value=='+') {
+                result.value = parseInt(firstNo)+parseInt(secondNo);
+            }
+            else if(operator.value=='-') {
+                result.value = firstNo-secondNo;
+            }
+            else if(operator.value=='*') {
+                result.value = firstNo*secondNo;
+            }
+            else if(operator.value=='%') {
+                result.value = firstNo%secondNo;
+            }
+            else {
+                result.value = firstNo/secondNo;
+            }
+        }
+
+        function getClear(){
+            temp='';
+            element1.value='';
+            document.getElementById("operands").value="";
+            document.getElementById("operator").value="";
+            document.getElementById("result").value="";
+        }
+    </script>
+</body>
+</html>

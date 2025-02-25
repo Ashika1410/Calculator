@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculator</title>
+    <h1>Calculator</h1>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+        integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="E:\VS programs\Java Script\Calculator.css">
+</head>
+
+<body>
+    <div class="calc">
+        <form action="operation">
+            <table>
+                <tr><input type="text" placeholder="" id="operand-1"></tr>
+                <br>
+                <tr><input type="text" placeholder="" id="operator"></tr>
+                <br>
+                <tr><input type="text" placeholder="" id="operand-2"></tr>
+                <br>
+                <tr><input type="text" placeholder="" id="result"></tr>
+                <br>
+
+                <!-- <tr>
+                    <tr class="icon" colspan="4"><div class="font"><i class="fa-solid fa-clock-rotate-left"></i></div>Ans=0 <br>  0</tr>
+                    <tr></tr>
+                    <tr></tr>
+                    <tr></tr>
+                </tr> -->
+
+                <tr>
+                    <!-- <td colspan="2">Rad | Deg</td>
+                    <td>x!</td> -->
+                    <td onclick="getOperand('(')" id="opr">(</td>
+                    <td onclick="getOperand(')')" id="opr">)</td>
+                    <td onclick="getOperator('%')" id="opr">%</td>
+                    <td onclick="getClear('CE')" id="opr">CE</td>
+                </tr>
+                <tr>
+                    <!-- <td>lnv</td>
+                    <td>sin</td>
+                    <td>ln</td> -->
+                    <td onclick="getOperand(7)" id="num">7</td>
+                    <td onclick="getOperand(8)" id="num">8</td>
+                    <td onclick="getOperand(9)" id="num">9</td>
+                    <td onclick="getOperator('/')" id="opr">/</td>
+                </tr>
+                <tr>
+                    <!-- <td>pi</td>
+                    <td>cos</td>
+                    <td>log</td> -->
+                    <td onclick="getOperand(4)" id="num">4</td>
+                    <td onclick="getOperand(5)" id="num">5</td>
+                    <td onclick="getOperand(6)" id="num">6</td>
+                    <td onclick="getOperator('*')" id="opr">*</td>
+                </tr>
+                <tr>
+                    <!-- <td>e</td>
+                    <td>tan</td>
+                    <td>rt</td> -->
+                    <td onclick="getOperand(1)" id="num">1</td>
+                    <td onclick="getOperand(2)" id="num">2</td>
+                    <td onclick="getOperand(3)" id="num">3</td>
+                    <td onclick="getOperator('-')" id="opr">-</td>
+                </tr>
+                <tr>
+                    <!-- <td>Ans</td>
+                    <td>Exp</td>
+                    <td>x*y</td> -->
+                    <td onclick="getOperand(0)" id="num">0</td>
+                    <td onclick="getOperand('.')" id="opr">.</td>
+                    <td onclick="getResult('=')" id="rst">=</td>
+                    <td onclick="getOperator('+')" id="opr">+</td>
+                </tr>
+    </div>
+    </table>
+    </form>
+    </div>
+
+    <script>
+        var element1 = document.getElementById('operand-1');
+        var operator = document.getElementById('operator');
+        var element2 = document.getElementById('operand-2');
+        var result = document.getElementById('result');
+
+        function getOperand(val) {
+            if (operator.value) {
+                element2.value += val;
+            }
+            else {
+                element1.value += val;
+            }
+        }
+
+        function getOperator(opr) {
+            operator.value = opr;
+            console.log(operator)
+        }
+
+        function getResult(rest) {
+            if (operator.value == '+') {
+                result.value = parseInt(element1.value)+parseInt(element2.value);
+            }
+            else if (operator.value == '-') {
+                result.value = element1.value - element2.value;
+            }
+            else if (operator.value == '*') {
+                result.value = element1.value * element2.value;
+            }
+            else if (operator.value == '%') {
+                result.value = element1.value % element2.value;
+            }
+            else {
+                result.value = element1.value / element2.value;
+            }
+        }
+
+        function getClear() {
+            document.getElementById('operand-1').value="";
+            document.getElementById('operator').value="";
+            document.getElementById('operand-2').value="";
+            document.getElementById('result').value="";
+        }
+
+
+        // var sym2 = ")";
+        // function para2() {
+        //     document.getElementById("right").innerHTML = sym2;
+        //     console.log(sym2)
+        // }
+        // var sym3 = "%";
+        // function mod() {
+        //     document.getElementById("perc").innerHTML = sym3;
+        //     console.log(sym3)
+        // }
+        // var cl = "CE";
+        // function clr() {
+        //     document.getElementById("clear").innerHTML = cl;
+        //     console.log(cl)
+        // }
+        // var seven = "7";
+        // function button7() {
+        //     document.getElementById("num-1").innerHTML = seven;
+        //     console.log(seven)
+        // }
+        // var eight = "8";
+        // function button8() {
+        //     document.getElementById("num-2").innerHTML = eight;
+        //     console.log(eight)
+        // }
+        // var nine = "9";
+        // function button9() {
+        //     document.getElementById("num-3").innerHTML = nine;
+        //     console.log(nine)
+        // }
+        // var sym4 = "/";
+        // function div() {
+        //     document.getElementById("reminder").innerHTML = sym4;
+        //     console.log(sym4)
+        // }
+        // var four = "4";
+        // function button4() {
+        //     document.getElementById("num-4").innerHTML = four;
+        //     console.log(four)
+        // }
+        // var five = "5";
+        // function button5() {
+        //     document.getElementById("num-5").innerHTML = five;
+        //     console.log(five)
+        // }
+        // var six = "6";
+        // function button6() {
+        //     document.getElementById("num-6").innerHTML = six;
+        //     console.log(six)
+        // }
+        // var sym5 = "*";
+        // function mul() {
+        //     document.getElementById("star").innerHTML = sym5;
+        //     console.log(sym5)
+        // }
+        // var one = "1";
+        // function button1() {
+        //     document.getElementById("num-7").innerHTML = one;
+        //     console.log(one)
+        // }
+        // var two = "2";
+        // function button2() {
+        //     document.getElementById("num-8").innerHTML = two;
+        //     console.log(two)
+        // }
+        // var three = "3";
+        // function button3() {
+        //     document.getElementById("num-9").innerHTML = three;
+        //     console.log(three)
+        // }
+        // var sym6 = "-";
+        // function sub() {
+        //     document.getElementById("minus").innerHTML = sym6;
+        //     console.log(sym6)
+        // }
+        // var zero = "0";
+        // function button0() {
+        //     document.getElementById("num-0").innerHTML = zero;
+        //     console.log(zero)
+        // }
+        // var sym7 = ".";
+        // function end() {
+        //     document.getElementById("pull").innerHTML = sym7;
+        //     console.log(sym7)
+        // }
+        // var sym8 = "=";
+        // function equal() {
+        //     document.getElementById("same").innerHTML = sym8;
+        //     console.log(sym8)
+        // }
+        // var sym9 = "+";
+        // function sum() {
+        //     document.getElementById("add").innerHTML = sym9;
+        //     console.log(sym9)
+        // }
+    </script>
+</body>
+
+</html>
